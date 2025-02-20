@@ -47,11 +47,8 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-           Use SSH to create the deploy path if it doesn't exist
+          chmod 600 ~/.ssh/id_rsa
           ssh -o StrictHostKeyChecking=no $USERNAME@$HOST "mkdir -p $DEPLOY_PATH"
-          # Sync the application files to the server
           rsync -avz --delete --no-t --exclude 'tests' --exclude '.git' . $USERNAME@$HOST:$DEPLOY_PATH
-          DAW - Despliegue de aplicaciones web
           ssh -o StrictHostKeyChecking=no $USERNAME@$HOST "cd $DEPLOY_PATH && composer install --no-dev --optimize-autoloader"
-          # Restart Apache if needed
           ssh -o StrictHostKeyChecking=no $USERNAME@$HOST "sudo systemctl restart apache2"
