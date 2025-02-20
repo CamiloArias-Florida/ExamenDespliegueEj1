@@ -1,0 +1,1 @@
+{"version":1,"defects":{"FactorialTest::testFactorial":8,"FactorialTest::testFactorialOfZero":8,"Tests\\FactorialTest::testCalcularFactorial":8},"times":{"FactorialTest::testFactorial":0.01,"FactorialTest::testFactorialOfZero":0.004,"Tests\\FactorialTest::testCalcularFactorial":0.001}}
